@@ -10,8 +10,13 @@ var particles = [];
 
 var flowfield = [];
 
+var canvas;
+
 function setup() {
-    createCanvas(800, 500);
+
+    canvas = createCanvas(800, 500);
+    canvas.position(0, 0);
+    canvas.parent("sketch-holder");
     cols = floor(width / scl);
     rows = floor(height / scl);
 
@@ -19,10 +24,12 @@ function setup() {
         particles[i] = new Particle();
 
     flowfield = new Array(cols * rows);
-    background(0);
+
+    background(0, 0);
 }
 
 function draw() {
+
     var y_perlin = 0;
 
     for (var y = 0; y <= rows; y++)
@@ -63,7 +70,7 @@ function draw_vector(x, y, v) {
 }
 
 function get_vector(x_perlin, y_perlin, t_perlin) {
-    var ang = noise(x_perlin, y_perlin, t_perlin) * TWO_PI * 4;
+    var ang = noise(x_perlin, y_perlin, t_perlin) * TWO_PI * 2.5;
     var v = p5.Vector.fromAngle(ang);
     v.setMag(0.1);
     return v;
