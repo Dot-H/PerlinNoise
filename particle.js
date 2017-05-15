@@ -34,9 +34,9 @@ function Particle() {
     }
 
     this.show = function () {
-        stroke(this.col, 0, 200, 2);
+        stroke(0, 0, this.col, 2);
         this.col = this.col + 1;
-        if (this.col > 50) {
+        if (this.col > 255) {
           this.col = 0;
         }
         strokeWeight(1);
